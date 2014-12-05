@@ -1,0 +1,28 @@
+h1 {
+    padding-bottom: 0.25em;
+    text-decoration: underline;
+}
+
+body {
+    background-image: url(../img/vegetable.jpg);
+}
+
+.centerWrap, .bigWrap {
+    width: 20%;
+    margin: 0 auto;
+    margin-left: 20%;
+}
+
+.bigWrap {
+    width: 10%;
+}
+
+
+.vegetableTitle {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.vegetableWrap {
+    padding: 0.5em;
+}
