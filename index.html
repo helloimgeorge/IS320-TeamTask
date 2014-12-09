@@ -12,27 +12,34 @@
     </head >
 
         <h1 class="centerWrap" >Vegetable Calculator</h1>
-        <p class="centerWrap">Welcome to the Vegetable calculator, please enter the pounds for each vegetable you wish to order</p>
+        <p class="centerWrap">Welcome to the vegetable cost calculator, please enter the number of pounds for each vegetable you wish to order.</p>
 
     <body>
         <div class="bigWrap">
             <div class="vegetableWrap">
                 <p class="vegetableTitle">Artichoke (lbs)</p>
-                <input type="number" name="Artichoke" class="form-control" placeholder="Enter here...">
+                <input type="text" id="artichokeWeight" name="artichokeWeight" class="form-control" placeholder="Enter here..." autofocus>
             </div>
 
             <div class="vegetableWrap">
                 <p class="vegetableTitle">Beets (lbs)</p>
-                <input type="number" name="Beets" class="form-control" placeholder="Enter here...">
+                <input type="text" id="beetWeight" class="form-control" placeholder="Enter here...">
             </div>
 
             <div class="vegetableWrap">
                 <p class="vegetableTitle">Carrots (lbs)</p>
-                <input type="number" name="Carrots" class="form-control" placeholder="Enter here...">
+                <input type="text" id="carrotWeight" class="form-control" placeholder="Enter here...">
             </div>
         </div>
 
-        <script src="js/signup.js"></script>
+        <button type="button" id="submitButton" class="btn btn-default">Submit</button>
+        <button type="button" id="clearButton" class="btn btn-default">Clear</button>
+        <button type="button" id="finishButton" class="btn btn-default">Finish</button>
+        <button type="button" id="resetButton" class="btn btn-default">Reset</button>
+        <button type="button" id="exitButton" class="btn btn-default">Exit</button>
+
+
+        <script src="js/app.js"></script>
 
     </body>
 </html>
