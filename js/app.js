@@ -1,5 +1,15 @@
 "use strict";
 
+// checks for textbox number validation
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
 function onReady() {
     var artichokeTextBox = document.getElementById('artichokeWeight');
     var beetTextBox = document.getElementById('beetWeight');
@@ -10,6 +20,7 @@ function onReady() {
     var buttonFinish = document.getElementById('finishButton');
     var buttonReset = document.getElementById('resetButton');
     var buttonExit = document.getElementById('exitButton');
+    var outputTextBox = document.getElementById('outputBox');
 
     var artichokeWt = 0;
     var beetWt = 0;
@@ -23,17 +34,14 @@ function onReady() {
     buttonFinish.disabled = true;
     buttonReset.disabled = true;
 
-    console.log("App is Working");
-
     // when you click submit, determines the display cost, shipping cost, and total cost
     buttonSubmit.addEventListener('click', function() {
-        artichokeWt = parseFloat(artichokeTextBox.value); // how to make it a number?
-        beetWt =  parseFloat(beetTextBox.value); // how to make it a number?
-        carrotWt =  parseFloat(carrotTextBox.value); // how to make it a number?
+        var line;
 
-        console.log(artichokeWt);
-        console.log(beetWt);
-        console.log(carrotWt);
+        artichokeWt = parseFloat(artichokeTextBox.value);
+        beetWt =  parseFloat(beetTextBox.value);
+        carrotWt =  parseFloat(carrotTextBox.value);
+
         var rawCost = calculateRawCost();
         var shippingCost = calculateShippingCost();
 
@@ -42,9 +50,10 @@ function onReady() {
         }
         var totalCost = rawCost + shippingCost;
 
-        console.log("Raw Cost: " + rawCost);
-        console.log("Shipping Cost: " + shippingCost);
-        console.log("Total Cost: " + totalCost);
+        displayText("Raw Cost: $" + (rawCost).toFixed(2)); // round two 2 decimals
+        displayText("Shipping Cost: $" + (shippingCost).toFixed(2)); // round two 2 decimals
+        var lastLi = displayText("Total Cost: $" + (totalCost).toFixed(2)); // round two 2 decimals
+        lastLi.style.marginBottom = '1em'; // creates a line break
 
         totalRevenue += rawCost;
         numberOfOrders++;
@@ -66,9 +75,10 @@ function onReady() {
             avgOrderPrice = 0;
         }
 
-        console.log("Total Price of Order is: " + totalRevenue);
-        console.log("Number of Orders is: " + numberOfOrders);
-        console.log("Average Price per Order is: " + avgOrderPrice);
+        displayText("Total Price of Order is: $" + (totalRevenue).toFixed(2));
+        displayText("Number of Orders is: " + numberOfOrders);
+        var lastLi = displayText("Average Price per Order is: $" + (avgOrderPrice).toFixed(2));
+        lastLi.style.marginBottom = '1em'; // creates a line break
     });
 
     // reset button, sets all values back to 0 and disables certain controls as well as focuses on artichoke txtbox
@@ -84,10 +94,10 @@ function onReady() {
         clearInputs();
     });
 
-    // Exit button, confirms whether user wishes to leave and redirects to Google homepage
+    // exit button, confirms whether user wishes to leave and redirects to Google homepage
     buttonExit.addEventListener('click', function() {
         if (window.confirm('Are you really sure you want to leave?')) {
-            window.location = 'http://www.google.com';
+            window.location = 'https://www.youtube.com/watch?v=3GwjfUFyY6M';
         }
     });
 
@@ -130,7 +140,15 @@ function onReady() {
         beetTextBox.value="";
         carrotTextBox.value="";
         artichokeTextBox.focus();
-    }
+    };
+
+    var displayText = function (line) {
+        var li = document.createElement('li');
+        var text = document.createTextNode(line);
+        li.appendChild(text);
+        outputTextBox.appendChild(li);
+        return li;
+    };
 }
 
 document.addEventListener('DOMContentLoaded', onReady);
