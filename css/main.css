@@ -1,20 +1,41 @@
+.container {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    border: 1px solid black;
+    padding-bottom: 1.0em;
+    padding-top: 1.0em;
+}
+
 h1 {
     padding-bottom: 0.25em;
     text-decoration: underline;
+    font-size: 60px;
+    opacity: 1.0;
+    text-align: center;
+}
+
+.intro {
+    font-size: 40px;
+    padding: 0;
 }
 
 body {
-    background-image: url(../img/vegetable.jpg);
+    background: url(../img/vegetable.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
 }
 
 .centerWrap, .bigWrap {
-    width: 20%;
     margin: 0 auto;
-    margin-left: 10%
+    padding: 0 0.3em 0 0.3em;
 }
 
 .bigWrap {
-    margin-left: 14%;
+    text-align: center;
 }
 
 .vegetableTitle {
@@ -28,12 +49,13 @@ body {
 
 .btn {
     display: block;
-    margin-left: 14.5%;
     width: 150px;
     color: white;
     background-color: black;
-    opacity: 0.8;
+    opacity: 1.0;
     margin-top: 15px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .form-control {
