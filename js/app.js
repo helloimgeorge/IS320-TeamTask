@@ -94,6 +94,7 @@ function onReady() {
 
         disableControlGroup();
         clearInputs();
+        outputTextBox.innerHTML="";
     });
 
     // exit button, confirms whether user wishes to leave and redirects to Google homepage
