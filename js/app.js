@@ -36,6 +36,10 @@ function onReady() {
         console.log(carrotWt);
         var rawCost = calculateRawCost();
         var shippingCost = calculateShippingCost();
+
+        if (rawCost > 100) { // if the raw cost of vegetables over $100, discount 5%
+            rawCost *= 0.95;
+        }
         var totalCost = rawCost + shippingCost;
 
         console.log("Raw Cost: " + rawCost);
@@ -50,13 +54,10 @@ function onReady() {
 
     // when you click clear, clears all textboxes and sets focus to first textbox
     buttonClear.addEventListener('click', function() {
-        artichokeTextBox.value="";
-        beetTextBox.value="";
-        carrotTextBox.value="";
-        artichokeTextBox.focus();
+        clearInputs();
     });
 
-    // 
+    // finish button, provides summary data on total price of orders, number of orders, and avg price of orders
     buttonFinish.addEventListener('click', function() {
         var avgOrderPrice;
         if (numberOfOrders > 0) {
@@ -70,7 +71,7 @@ function onReady() {
         console.log("Average Price per Order is: " + avgOrderPrice);
     });
 
-    //
+    // reset button, sets all values back to 0 and disables certain controls as well as focuses on artichoke txtbox
     buttonReset.addEventListener('click', function() {
         artichokeWt = 0;
         beetWt = 0;
@@ -80,11 +81,10 @@ function onReady() {
         numberOfOrders = 0;
 
         disableControlGroup();
-
-        artichokeTextBox.focus();
+        clearInputs();
     });
 
-    //
+    // Exit button, confirms whether user wishes to leave and redirects to Google homepage
     buttonExit.addEventListener('click', function() {
         if (window.confirm('Are you really sure you want to leave?')) {
             window.location = 'http://www.google.com';
@@ -111,16 +111,25 @@ function onReady() {
         return shippingCost;
     };
 
+    // enables clear, finish and reset button
     var enableControlGroup = function() {
         buttonClear.disabled = false;
         buttonFinish.disabled = false;
         buttonReset.disabled = false;
     };
 
+    // disables clear, finish and reset button
     var disableControlGroup = function() {
         buttonClear.disabled = true;
         buttonFinish.disabled = true;
         buttonReset.disabled = true;
+    };
+
+    var clearInputs = function () {
+        artichokeTextBox.value="";
+        beetTextBox.value="";
+        carrotTextBox.value="";
+        artichokeTextBox.focus();
     }
 }
 
